@@ -49,7 +49,39 @@ public class basicas {
         return result;
     }
 
-    
+      public static int[][] resArrays(int[][] first, int[][] second) {
+        if (first.length != second.length || first[0].length != second[0].length) {
+            throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
+        }
+
+        int[][] result = new int[first.length][first[0].length];
+
+        for (int row = 0; row < first.length; row++) {
+            for (int column = 0; column < first[row].length; column++) {
+                result[row][column] = first[row][column] - second[row][column];
+            }
+        }
+
+        return result;
+    }
+
+       public static int[][] prodArrays(int[][] first, int[][] second) {
+        if (first.length != second.length || first[0].length != second[0].length) {
+            throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
+        }
+
+        int[][] result = new int[first.length][first[0].length];
+
+        for (int row = 0; row < first.length; row++) {
+            for (int column = 0; column < first[row].length; column++) {
+                result[row][column] = first[row][column] * second[row][column];
+            }
+        }
+
+        return result;
+    }
+
+
             
         public static boolean esSimetrica(int[][] array){
             int rows = array.length;
