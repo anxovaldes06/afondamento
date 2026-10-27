@@ -81,7 +81,38 @@ public class basicas {
         return result;
     }
 
+    public static int[][] prodArraysABC(int[][] A, int[][] B, int[][] C) {
 
+    if (A[0].length != B.length) {
+        throw new IllegalArgumentException("Columnas de A deben coincidir con filas de B");
+    }
+
+    if (B[0].length != C.length) {
+        throw new IllegalArgumentException("Columnas de B deben coincidir con filas de C");
+    }
+
+    int[][] AB = new int[A.length][B[0].length];
+
+    for (int i = 0; i < A.length; i++) {
+        for (int j = 0; j < B[0].length; j++) {
+            for (int k = 0; k < B.length; k++) {
+                AB[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    int[][] resultado = new int[AB.length][C[0].length];
+
+    for (int i = 0; i < AB.length; i++) {
+        for (int j = 0; j < C[0].length; j++) {
+            for (int k = 0; k < C.length; k++) {
+                resultado[i][j] += AB[i][k] * C[k][j];
+            }
+        }
+    }
+
+    return resultado;
+}
             
         public static boolean esSimetrica(int[][] array){
             int rows = array.length;
