@@ -49,6 +49,8 @@ public class basicas {
         return result;
     }
 
+
+
       public static int[][] resArrays(int[][] first, int[][] second) {
         if (first.length != second.length || first[0].length != second[0].length) {
             throw new IllegalArgumentException("Las matrices deben tener las mismas dimensiones");
@@ -132,7 +134,6 @@ public class basicas {
             return true;
     }
 
-    
 
             public static boolean esDiagonal(int[][] array){
                 int rows = array.length;
@@ -156,7 +157,35 @@ public class basicas {
 
             
 
+    public static int determinant3x3(int[][] matriz) {
+        if (matriz.length != 3 || matriz[0].length != 3) {
+            throw new IllegalArgumentException("La matriz debe ser estrictamente de dimensiones 3x3");
+        }
 
+        int det = matriz[0][0] * (matriz[1][1] * matriz[2][2] - matriz[1][2] * matriz[2][1])
+                - matriz[0][1] * (matriz[1][0] * matriz[2][2] - matriz[1][2] * matriz[2][0])
+                + matriz[0][2] * (matriz[1][0] * matriz[2][1] - matriz[1][1] * matriz[2][0]);
+
+        return det;
+    }
+
+    public static int pedirYCalcularDeterminante3x3() {
+        Scanner sc = new Scanner(System.in);
+        return pedirYCalcularDeterminante3x3(sc);
+    }
+
+    public static int pedirYCalcularDeterminante3x3(Scanner sc) {
+        System.out.println("--- Introduce una matriz 3x3 para calcular su determinante ---");
+        int[][] matriz3x3 = fillFromKeyboard(sc, 3, 3);
+        
+        System.out.println("\nMatriz introducida:");
+        printArray(matriz3x3);
+
+        int resultado = determinant3x3(matriz3x3);
+        System.out.println("La determinante es: " + resultado);
+        
+        return resultado;
+    }
 
 
     public static void printArray(int[][] array) {
